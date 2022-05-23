@@ -2,7 +2,8 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 from PIL import Image
-import sklearn as sklearn
+#import sklearn as sklearn
+import scikit-learn
 import pickle
 
 st.title('Car Price Prediction')
