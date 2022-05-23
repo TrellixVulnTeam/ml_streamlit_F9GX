@@ -5,12 +5,12 @@ from PIL import Image
 import sklearn as sklearn
 import pickle
 
-image = Image.open("img.jpg")
-st.image(image,width=100)
+#image = Image.open("img.jpg")
+#st.image(image,width=100)
 st.title('Car Price Prediction')
 
-mlmodel = st.selectbox('Please select the maschine learning model',['LineerRegression','RandomForest','XGBoost'])
-
+#mlmodel = st.selectbox('Please select the maschine learning model',['LineerRegression','RandomForest','XGBoost'])
+st.write("Maschine learning model is LineerRegression")
 
 brand = st.radio("Select a brand", ("Audi", "Renault", "Opel"))
 if brand == 'Audi':
@@ -55,24 +55,25 @@ columns=[
 
 my_dict_dummy = pd.get_dummies(my_dict).reindex(columns=columns, fill_value=0)
 
-if mlmodel == 'XGBoost':
-    filename2 = "xgb_final.pkl"
-    model = pickle.load(open(filename2, "rb"))
-    pred = model.predict(my_dict_dummy)
-elif mlmodel == 'RandomForest':
-    filename3 = 'rf_final.pkl'
-    model = pickle.load(open(filename3, "rb"))
-    pred = model.predict(my_dict) 
-else:
-    final_scaler = pickle.load(open('scaler_reg.pkl', "rb"))
-    my_dict_scaled = final_scaler.transform(my_dict_dummy)
-    filename = "reg_final.pkl"
-    model = pickle.load(open(filename, "rb"))
-    pred = model.predict(my_dict_scaled)
+# if mlmodel == 'XGBoost':
+#     filename2 = "xgb_final.pkl"
+#     model = pickle.load(open(filename2, "rb"))
+#     pred = model.predict(my_dict_dummy)
+# elif mlmodel == 'RandomForest':
+#     filename3 = 'rf_final.pkl'
+#     model = pickle.load(open(filename3, "rb"))
+#     pred = model.predict(my_dict) 
+# else:
+final_scaler = pickle.load(open('scaler_reg.pkl', "rb"))
+my_dict_scaled = final_scaler.transform(my_dict_dummy)
+filename = "reg_final.pkl"
+model = pickle.load(open(filename, "rb"))
+pred = model.predict(my_dict_scaled)
     
 
 if st.button('Predict'):
-    st.success(f'The estimated price of your car is {int(pred[0])}')
+    st.success(f'The estimated price of your car is ${int(pred[0])}')
+
 
 
 
