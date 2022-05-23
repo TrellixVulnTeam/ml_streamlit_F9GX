@@ -1,12 +1,12 @@
-# import streamlit as st
-# import numpy as np
-# import pandas as pd
-# from PIL import Image
-# import sklearn as sklearn
-# import pickle
 import streamlit as st
-import pickle
+import numpy as np
 import pandas as pd
+from PIL import Image
+import sklearn as sklearn
+import pickle
+# import streamlit as st
+# import pickle
+# import pandas as pd
 st.title('Car Price Prediction')
 
 
