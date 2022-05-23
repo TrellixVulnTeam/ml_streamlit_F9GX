@@ -55,10 +55,9 @@ columns=[
 
 my_dict_dummy = pd.get_dummies(my_dict).reindex(columns=columns, fill_value=0)
 
-final_scaler = pickle.load(open('scaler_reg.pkl', "rb"))
+final_scaler = pickle.load(open("scaler_reg.pkl", "rb"))
 my_dict_scaled = final_scaler.transform(my_dict_dummy)
-filename = "reg_final.pkl"
-model = pickle.load(open(filename, "rb"))
+model = pickle.load(open("reg_final.pkl", "rb"))
 pred = model.predict(my_dict_scaled)
     
 
